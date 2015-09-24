@@ -14,3 +14,11 @@ python manage.py migrate blog
 edit - blog/admin.py
   - register Post model with admin part of site
 Check by running server:
+   python manage.py runserver
+   visit http://127.0.0.1:8000/admin/
+   - can't login because no superuser
+Use python manage.py createsuperuser to create a user
+   Check using runserver and try logging in
+See that that works
+
+*create a bunch of posts in the admin interface, some public*
