@@ -1,14 +1,16 @@
+from django.db import models
+from django.utils import timezone
 
-django-admin startproject mysite .
-Update TIME_ZONE in mysite/settings.py to something like Europe/London
-Add STATIC_ROOT in mysite/settings.py
-Check DATABASES in mysite/settings.py
-python manage.py migrate
-python manage.py runserver
-  - visit http://127.0.0.1:8000/
-python manage.py startapp blog
-Install blog in INSTALLED_APPS in mysite/settings.py
-edit -- blog/models.py
-python manage.py makemigrations blog
-python manage.py migrate blog
-edit - blog/admin.py
+class Post(models.Model):
+    author = models.ForeignKey('auth.User')
+    title = models.CharField(max_length=200)
+    test = models.TextField()
+    created_date = models.DateTimeField( default=timezone.now )
+    published_date = models.DateTimeField( blank=True, null=True )
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.title
