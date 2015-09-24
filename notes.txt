@@ -22,3 +22,6 @@ Use python manage.py createsuperuser to create a user
 See that that works
 
 *create a bunch of posts in the admin interface, some public*
+
+
+python manage.py collectstatic
